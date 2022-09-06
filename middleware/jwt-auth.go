@@ -12,7 +12,7 @@ import (
 func AuthorizeJWT(jwtService service.JWTService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
-
+		log.Println("Authorization:", authHeader)
 		if authHeader == "" {
 			response := helper.BuildErrorResponse("Failed to process request", "No token found", nil)
 			c.AbortWithStatusJSON(http.StatusBadRequest, response)

@@ -25,7 +25,7 @@ func SetupDatebaseConnection() *gorm.DB {
 		panic("Failed to create a connection to database")
 	}
 
-	db.AutoMigrate(&entity.User{}, &entity.Book{})
+	db.AutoMigrate(&entity.User{}, &entity.Book{}, &entity.WxToken{}, &entity.WxUser{})
 	return db
 }
 
@@ -35,5 +35,6 @@ func CloseDatabaseConnection(db *gorm.DB) {
 	if err != nil {
 		panic("Failed to close connection from database")
 	}
+
 	dbSQL.Close()
 }

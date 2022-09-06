@@ -40,6 +40,8 @@ func (c *authControler) Login(ctx *gin.Context) {
 		generatedToken := c.jwtService.GenerateToken(strconv.FormatUint(v.ID, 10))
 		v.Token = generatedToken
 		response := helper.BuildResponse(true, "OK", v)
+		//fmt.Printf("response:%#v\n", v)
+
 		ctx.JSON(http.StatusOK, response)
 		return
 	}

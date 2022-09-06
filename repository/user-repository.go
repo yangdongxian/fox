@@ -41,7 +41,8 @@ func (db *userConnection) UpdateUser(user entity.User) entity.User {
 }
 func (db *userConnection) VerfyCredential(email string, password string) interface{} {
 	var user entity.User
-	res := db.connection.Where("email = ?", email).Take(&user)
+	res := db.connection.Where("email = ?", email).Find(&user)
+	//res := db.connection.Where("email = ?", email).Take(&user)
 	if res.Error == nil {
 		return user
 	}
